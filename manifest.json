@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+  "name": "Website Blocker",
+  "version": "1.0",
+
+  "description": "Block websites and increase productivity!",
+
+  "content_scripts": [
+    {
+      "matches": ["*"],
+      "js": ["website_blocker.js"]
+    }
+  ]
+}
+
