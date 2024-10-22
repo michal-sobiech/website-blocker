@@ -1,14 +1,19 @@
-import { readLinesFromFile, readTextFile } from "./file-utils";
 import { isUrlBlocked } from "./url-utils";
 import { setupDomBlockade } from "./dom-utils";
+import { getParsedItem as getFromLocalStorage } from "./local-storage-utils";
+import { blockedUrlsLocalStorageKey, blockadeHtmlCode } from "./variables";
 
 
-const blockedUrlPatternsFile = "blocked_url_patterns.txt";
-const blockadeHtmlCodeFile = "blockade_screen.html";
+async function main(): Promise<void> {
+	const blockedUrls = getFromLocalStorage(blockedUrlsLocalStorageKey);
 
-const blockedUrlPatterns = await readLinesFromFile(blockedUrlPatternsFile);
-const blockadeHtmlCode = readTextFile(blockadeHtmlCodeFile);
-
-if (isUrlBlocked(document.URL, blockedUrlPatterns)) {
-   	setupDomBlockade(blockadeHtmlCode);
+	if (isUrlBlocked(document.URL, blockedUrls)) {
+		setupDomBlockade(blockadeHtmlCode);
+		console.log("ACCESS DENIED!");
+	}
+	else {
+		console.log("Access granted!");
+	}
 }
+
+main();
