@@ -1,11 +1,17 @@
 const path = require('path');
 
 module.exports = {
-  entry: './dist/block-websites.js',  // Twój główny plik
+  entry: {
+	'content-script': './dist/block-websites.js',
+	'background': './dist/background.js',
+  },
   output: {
-    filename: 'content-script.bundle.js',  // Wynikowy połączony plik
+    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist')
   },
-  mode: 'production'
+  mode: 'production',
+  optimization: {
+    minimize: false 
+  }
 };
 

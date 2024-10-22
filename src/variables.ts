@@ -1,4 +1,4 @@
-export const blockedUrlsLocalStorageKey = "blockedUrls";
+export const blockedUrlsStorageKey = "blockedUrls";
 
 export const blockadeHtmlCode = `
 <!DOCTYPE html>

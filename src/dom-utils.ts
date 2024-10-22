@@ -1,3 +1,3 @@
 export function setupDomBlockade(htmlCode: string): void {
-	document.write(htmlCode);
+	document.documentElement.innerHTML = htmlCode;
 }

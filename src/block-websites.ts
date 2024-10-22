@@ -1,13 +1,22 @@
 import { isUrlBlocked } from "./url-utils";
 import { setupDomBlockade } from "./dom-utils";
-import { getParsedItem as getFromLocalStorage } from "./local-storage-utils";
-import { blockedUrlsLocalStorageKey, blockadeHtmlCode } from "./variables";
+import { getItem as getFromBrowserStorage } from "./browser-storage-utils";
+import { blockedUrlsStorageKey, blockadeHtmlCode } from "./variables";
 
+
+window.addEventListener('load', () => main());
 
 async function main(): Promise<void> {
-	const blockedUrls = getFromLocalStorage(blockedUrlsLocalStorageKey);
+	console.log("Loaded!");
+	//while (true) {
+		//await new Promise(resolve => setTimeout(resolve, 1000));
+		//console.log("test");
+	//	await new Promise(resolve => setTimeout(resolve, 0));
+	//}
+	
+	const blockedUrls = await getFromBrowserStorage(blockedUrlsStorageKey);
 
-	if (isUrlBlocked(document.URL, blockedUrls)) {
+	if (blockedUrls && isUrlBlocked(document.URL, blockedUrls)) {
 		setupDomBlockade(blockadeHtmlCode);
 		console.log("ACCESS DENIED!");
 	}
@@ -17,3 +26,4 @@ async function main(): Promise<void> {
 }
 
 main();
+

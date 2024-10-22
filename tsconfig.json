@@ -3,15 +3,14 @@
     "target": "es2023",                              
     "module": "es6",                          
 	"lib": ["esnext", "dom"],
+	"types": ["firefox-webext-browser"],
     "strict": true,                               
     "esModuleInterop": true,                       
     "forceConsistentCasingInFileNames": true,      
     "skipLibCheck": true,                          
     "outDir": "./dist",                            
     "rootDir": "./src",                            
-    "moduleResolution": "node",
-	"allowUnreachableCode": false,
-	"allowUnusedLabels": false
+    "moduleResolution": "node"
   },
   "include": [
     "src/**/*"                              
