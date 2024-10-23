@@ -14,3 +14,5 @@ export const blockadeHtmlCode = `
 	</body>
 </html>
 `;
+
+export const pollingPeriodMs = 1000;
